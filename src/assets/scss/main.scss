@@ -2,22 +2,48 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
+.form-control {
+    border: 3px dashed rgba(96, 147, 247, 0.3) !important;
+    outline: none !important;
+    background-color: rgba(96, 147, 247, 0.1);
+}
+
+.btn-outline-info:hover {
+    color: white !important;
+}
+
+.pfp {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100em;
+    border: 1px solid var(--bs-info);
+}
+
+.bg-gradient {
+    background: linear-gradient(90deg, #29c5fe, #6093f7) !important;
+}
+
+.outline-0 {
+    border: none !important;
+}
+
 body {
-  overscroll-behavior: none;
+    overscroll-behavior: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 #app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--bs-page);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bs-page);
 }
 
 main {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
-

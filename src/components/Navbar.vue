@@ -1,7 +1,10 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
-import Login from './Login.vue';
+import { AppState } from '../AppState.js';
+
+const user = computed(() => AppState.user)
+const account = computed(() => AppState.account)
 
 const theme = ref(loadState('theme') || 'light')
 
@@ -18,32 +21,32 @@ function toggleTheme() {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+  <nav class="navbar navbar-expand-sm navbar-dark bg-gradient px-3 justify-content-between">
+    <img v-if="account" :src="account?.picture || user?.picture" height="40" class="pfp d-sm-none">
+    <router-link class="navbar-brand px-0 mx-0 d-flex" :to="{ name: 'Home' }">
+      <div class="d-flex align-items-center gap-2 fw-bold">
+        <i class="mdi mdi-lan fs-2"></i><span class="d-sm-block d-none"> TheNetwork</span>
       </div>
     </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+    <button class="navbar-toggler outline-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
+        <!-- <li>
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
             About
           </router-link>
-        </li>
+        </li> -->
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div>
         <button class="btn text-light" @click="toggleTheme"
           :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
-          <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i>
+          <i class="mdi fs-5" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i>
         </button>
       </div>
-      <Login />
     </div>
   </nav>
 </template>
@@ -67,5 +70,9 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+.navbar-toggler {
+    padding: 0;
 }
 </style>
