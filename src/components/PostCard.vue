@@ -15,6 +15,7 @@ defineProps({ post: Post })
                 </router-link>
             </div>
             <div class="col">
+                <p class="text-secondary fst-italic">{{ post.postDateString  }}</p>
                 <img v-if="post.imgUrl != ''" :src="post.imgUrl" class="post img-fluid w-100 rounded border">
                 <p class="mt-2 form-control">{{ post.body }}</p>
             </div>

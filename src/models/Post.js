@@ -5,9 +5,41 @@ export class Post {
         this.imgUrl = data.imgUrl || ""
         this.creatorId = data.creatorId
         this.likeIds = data.likeIds
-        this.createdAt = data.createdAt
-        this.updatedAt = data.updatedAt
+        this.createdAt = new Date(data.createdAt)
+        this.updatedAt = new Date(data.updatedAt)
         this.creator = data.creator
+    }
+
+    get postDateString() {
+        return `Posted ${this.formatDatetoRelative(this.createdAt)}${this.createdAt.getTime() == this.updatedAt.getTime() ? `` : ` (Edited ${this.formatDatetoRelative(this.updatedAt)})`}`
+    }
+
+    formatDatetoRelative(datee) {
+        let current = new Date().getTime()
+        let date = datee.getTime()
+        let elapsed = current - date
+
+        let msSecond = 1000
+        let msMinute = msSecond * 60
+        let msHour = msMinute * 60
+        let msDay = msHour * 24
+        let msMonth = msDay * 30
+
+        if (elapsed < msMinute) {
+            let x = Math.round(elapsed / msSecond)
+            return `${x}s ago`
+        } else if (elapsed < msHour) {
+            let x = Math.round(elapsed / msMinute)
+            return `${x}m ago`
+        } else if (elapsed < msDay) {
+            let x = Math.round(elapsed / msHour)
+            return `${x}h ago`
+        } else if (elapsed < msMonth) {
+            let x = Math.round(elapsed / msDay)
+            return `${x}d ago`
+        } else {
+            return datee.toLocaleDateString()
+        }
     }
 }
 
