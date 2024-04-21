@@ -51,8 +51,8 @@ watch(page, (nv, ov) => {
 
 <template>
     <div v-if="profile" class="container-fluid">
-        <div class="mt-4 row justify-content-center">
-            <div class="col-lg-9 col-11 card border-0 bg-white shadow p-0">
+        <div class="mt-5 row justify-content-center">
+            <div class="col-xxl-7 col-xl-6 col-lg-9 col-11 card border-0 bg-white shadow p-0">
                 <img :src="profile.coverImg" class="banner card-img-top" alt="">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
@@ -80,10 +80,11 @@ watch(page, (nv, ov) => {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 col-11" id="feed">
+            <div class="col-lg-9 col-11 mt-5" id="feed">
                 <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+                <p v-if="posts.length == 0" class="text-center text-secondary">This user hasn't made any posts yet.</p>
             </div>
-            <Pagination/>
+            <Pagination v-if="posts.length != 0"/>
         </div>
     </div>
     <div class="text-center mt-5 text-secondary" v-else>

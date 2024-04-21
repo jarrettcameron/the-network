@@ -22,6 +22,11 @@
     font-weight: 600;
 }
 
+.form-control::placeholder {
+    color: var(--bs-secondary);
+    font-weight: 500;
+}
+
 .pfp {
     aspect-ratio: 1/1;
     object-fit: cover;

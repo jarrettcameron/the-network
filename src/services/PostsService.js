@@ -30,9 +30,19 @@ class PostsService {
 
     async deletePost(postId) {
         await api.delete(`/api/posts/${postId}`)
-        const index = AppState.posts.findIndex(x => x.id == postId)
-        if (index == -1) return
-        AppState.posts.splice(index, 1)
+        let x = true
+        let index = AppState.posts.findIndex(x => x.id == postId)
+        if (index == -1) {
+            index = AppState.currentProfilePosts.findIndex(x => x.id == postId)
+            if (index == -1) return
+            x = false
+        }
+        if (x) {
+            AppState.posts.splice(index, 1)
+        } else {
+            AppState.currentProfilePosts.splice(index, 1)
+        }
+
     }
 
 
