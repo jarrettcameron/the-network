@@ -1,10 +1,11 @@
 <script setup>
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import Pop from '../utils/Pop.js';
 import { profilesService } from '../services/ProfilesService.js';
 import { AppState } from '../AppState.js';
 import { postsService } from '../services/PostsService.js';
+import Pagination from '../components/Pagination.vue';
 
 const route = useRoute()
 
@@ -13,10 +14,18 @@ const posts = computed(() => AppState.currentProfilePosts)
 
 const message = ref("Loading...")
 
+async function getPosts() {
+    try {
+      await postsService.loadPostsByUser(route.params.profileId)
+    }
+    catch (error){
+      Pop.error("There was an issue loading profile posts. Please try again later.");
+    }
+}
+
 async function loadProfile() {
     try {
       await profilesService.getProfileById(route.params.profileId)
-      await postsService.loadPostsByUser(route.params.profileId)
     }
     catch (error){
       Pop.error("There was an issue loading that profile. Please try again later.");
@@ -25,8 +34,16 @@ async function loadProfile() {
 }
 
 onMounted(() => {
-    AppState.currentPage = 1
     loadProfile()
+    getPosts()
+})
+
+const page = computed(() => AppState.currentPage)
+watch(page, (nv, ov) => {
+    if (nv != ov) {
+        document.querySelector('#feed').scrollIntoView()
+        getPosts()
+    }
 })
 
 </script>
@@ -45,6 +62,9 @@ onMounted(() => {
                             </div>
                         </div>
                         <div class="text-end float-end d-flex gap-2 fs-5">
+                                <a style="color: transparent; user-select: none;">
+                                    <i class="mdi mdi-github"></i>
+                                </a>
                                 <a v-if="profile.github != ''" :href="profile.github" target="_blank" class="text-body">
                                     <i class="mdi mdi-github"></i>
                                 </a>
@@ -60,9 +80,10 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 col-11">
+            <div class="col-lg-9 col-11" id="feed">
                 <PostCard v-for="post in posts" :key="post.id" :post="post"/>
             </div>
+            <Pagination/>
         </div>
     </div>
     <div class="text-center mt-5 text-secondary" v-else>

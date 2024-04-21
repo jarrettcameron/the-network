@@ -3,12 +3,9 @@ import { computed, onMounted, watch } from "vue";
 import { AppState } from "../AppState.js";
 import { postsService } from "../services/PostsService.js";
 import Pop from "../utils/Pop.js";
-import { pagesService } from "../services/PagesService.js";
 
 const posts = computed(() => AppState.posts)
 const account = computed(() => AppState.account)
-const page = computed(() => AppState.currentPage)
-const totalPages = computed(() => AppState.totalPages)
 
 async function getPosts() {
     try {
@@ -23,13 +20,10 @@ onMounted(() => {
     getPosts()
 })
 
-function scroll() {
-    document.querySelector('#feed').scrollIntoView()
-}
-
+const page = computed(() => AppState.currentPage)
 watch(page, (nv, ov) => {
     if (nv != ov) {
-        scroll()
+        document.querySelector('#feed').scrollIntoView()
         getPosts()
     }
 })
@@ -47,25 +41,11 @@ watch(page, (nv, ov) => {
       <div class="col-lg-9 col-11 my-1" v-for="post in posts" :key="post">
         <PostCard :post="post" />
       </div>
-      <div class="col-lg-9 col-11 my-3 mb-5">
-        <div class="row text-center">
-            <div class="col-4">
-                <button class="btn w-100" :disabled="page == 1" @click="pagesService.changePage(page - 1)">Previous Page</button>
-            </div>
-            <div class="col-4">
-                Page {{ page }} of {{ totalPages }}
-            </div>
-            <div class="col-4">
-                <button class="btn w-100" :disabled="page == totalPages" @click="pagesService.changePage(page + 1)">Next Page</button>
-            </div>
-        </div>
-      </div>
+      <Pagination/>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.btn:disabled {
-    border:none;
-}
+
 </style>

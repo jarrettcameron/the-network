@@ -6,6 +6,7 @@ class ProfilesService {
     async getProfileById(profileId) {
         AppState.currentProfile = null
         AppState.currentProfilePosts = null
+        AppState.currentPage = 1
         const response = await api.get(`/api/profiles/${profileId}?page=${AppState.currentPage}`)
         AppState.currentProfile = new Account(response.data)
     }

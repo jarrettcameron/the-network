@@ -31,7 +31,7 @@ async function edit() {
 }
 
 
-watch(editing, (nv, ov) => {
+watch(editing, (nv) => {
   formData.value.body = nv.body
   imageAttachment.value = nv.imgUrl != ""
   formData.value.imgUrl = nv.imgUrl

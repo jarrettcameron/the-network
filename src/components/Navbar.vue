@@ -44,7 +44,7 @@ function toggleTheme() {
       <div>
         <button class="btn text-light d-flex align-items-center gap-2" @click="toggleTheme"
           :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
-          <i class="mdi fs-5" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i><span class="d-sm-none">{{ theme == 'light' ? 'Switch to Dark mode' : 'Switch to Light mode' }}</span>
+          <i class="mdi fs-5" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i><span class="d-lg-none">{{ theme == 'light' ? 'Switch to Dark mode' : 'Switch to Light mode' }}</span>
         </button>
       </div>
     </div>
@@ -66,7 +66,7 @@ a:hover {
   border-bottom-right-radius: 0;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 992px) {
   nav {
     height: 64px;
   }
