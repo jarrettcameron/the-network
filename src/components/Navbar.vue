@@ -21,11 +21,11 @@ function toggleTheme() {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-gradient px-3 justify-content-between">
-    <img v-if="account" :src="account?.picture || user?.picture" height="40" class="pfp d-sm-none">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-gradient px-3 justify-content-between">
+    <img v-if="account" :src="account?.picture || user?.picture" height="40" class="pfp d-lg-none">
     <router-link class="navbar-brand px-0 mx-0 d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center gap-2 fw-bold">
-        <i class="mdi mdi-lan fs-2"></i><span class="d-sm-block d-none"> TheNetwork</span>
+        <i class="mdi mdi-lan fs-2"></i><span class="d-lg-block d-none"> TheNetwork</span>
       </div>
     </router-link>
     <button class="navbar-toggler outline-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"

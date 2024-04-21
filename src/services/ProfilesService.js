@@ -5,7 +5,8 @@ import { api } from "./AxiosService.js"
 class ProfilesService {
     async getProfileById(profileId) {
         AppState.currentProfile = null
-        const response = await api.get(`/api/profiles/${profileId}`)
+        AppState.currentProfilePosts = null
+        const response = await api.get(`/api/profiles/${profileId}?page=${AppState.currentPage}`)
         AppState.currentProfile = new Account(response.data)
     }
 }

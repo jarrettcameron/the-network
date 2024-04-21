@@ -1,3 +1,5 @@
+import { AppState } from "../AppState"
+
 export class Post {
     constructor(data) {
         this.id = data.id
@@ -8,6 +10,10 @@ export class Post {
         this.createdAt = new Date(data.createdAt)
         this.updatedAt = new Date(data.updatedAt)
         this.creator = data.creator
+    }
+
+    get isLiked() {
+        return (this.likeIds.find(x => x == AppState.account?.id) != null)
     }
 
     get postDateString() {
