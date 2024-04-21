@@ -14,7 +14,7 @@ const totalPages = computed(() => AppState.totalPages)
         <div class="col-4">
             <button class="btn w-100" :disabled="page == 1" @click="pagesService.changePage(page - 1)">Previous Page</button>
         </div>
-        <div class="col-4">
+        <div class="col-4" style="user-select: none;">
             Page {{ page }} of {{ totalPages }}
         </div>
         <div class="col-4">

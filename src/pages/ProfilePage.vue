@@ -11,6 +11,7 @@ const route = useRoute()
 
 const profile = computed(() => AppState.currentProfile)
 const posts = computed(() => AppState.currentProfilePosts)
+const account = computed(() => AppState.account)
 
 const message = ref("Loading...")
 
@@ -34,6 +35,7 @@ async function loadProfile() {
 }
 
 onMounted(() => {
+    AppState.editingPost = null
     loadProfile()
     getPosts()
 })
@@ -80,11 +82,17 @@ watch(page, (nv, ov) => {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 col-11 mt-5" id="feed">
-                <PostCard v-for="post in posts" :key="post.id" :post="post"/>
-                <p v-if="posts.length == 0" class="text-center text-secondary">This user hasn't made any posts yet.</p>
+            <div class="col-lg-9 col-11 mt-5">
+                <PostForm v-if="account?.id == profile?.id" />
             </div>
-            <Pagination v-if="posts.length != 0"/>
+            <div class="col-lg-9 col-11">
+                <hr v-if="account?.id == profile?.id">
+            </div>
+            <div class="col-lg-9 col-11" id="feed">
+                <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+                <p v-if="posts?.length == 0" class="text-center text-secondary">This user hasn't made any posts yet.</p>
+            </div>
+            <Pagination v-if="posts?.length != 0"/>
         </div>
     </div>
     <div class="text-center mt-5 text-secondary" v-else>

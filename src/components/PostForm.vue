@@ -32,6 +32,10 @@ async function edit() {
 
 
 watch(editing, (nv) => {
+  if (nv == null) {
+    imageAttachment.value = false
+    return
+  }
   formData.value.body = nv.body
   imageAttachment.value = nv.imgUrl != ""
   formData.value.imgUrl = nv.imgUrl

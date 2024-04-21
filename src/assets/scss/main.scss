@@ -33,6 +33,7 @@
     object-position: center;
     border-radius: 100em;
     border: 2px solid var(--bs-info);
+    user-select: none;
 }
 
 .bg-gradient {
