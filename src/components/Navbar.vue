@@ -6,6 +6,8 @@ import { AppState } from '../AppState.js';
 const user = computed(() => AppState.user)
 const account = computed(() => AppState.account)
 
+const searchQuery = ref('')
+
 const theme = ref(loadState('theme') || 'light')
 
 onMounted(() => {
@@ -40,8 +42,17 @@ function toggleTheme() {
           </router-link>
         </li> -->
       </ul>
-      <!-- LOGIN COMPONENT HERE -->
-      <div>
+      
+      <div class="me-lg-3 mt-lg-0 mt-3">
+        <form>
+          <div class="input-group">
+            <input class="form-control text-light" type="text" placeholder="Search" v-model="searchQuery">
+            <router-link :to="{name: 'Search', params: { query: searchQuery || 'none' }}" class="btn btn-light px-2 py-0"><i class="text-info fs-4 mdi mdi-magnify"></i></router-link>
+          </div>
+        </form>
+      </div>
+
+      <div class="mt-lg-0 mt-2">
         <button class="btn text-light d-flex align-items-center gap-2" @click="toggleTheme"
           :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
           <i class="mdi fs-5" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i><span class="d-lg-none">{{ theme == 'light' ? 'Switch to Dark mode' : 'Switch to Light mode' }}</span>
@@ -52,6 +63,18 @@ function toggleTheme() {
 </template>
 
 <style scoped>
+
+.form-control,.form-control:focus {
+  outline: none !important;
+  border: none !important;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-control::placeholder {
+    color: var(--bs-body);
+    font-weight: 500;
+}
+
 a:hover {
   text-decoration: none;
 }

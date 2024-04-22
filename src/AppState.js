@@ -9,5 +9,6 @@ export const AppState = reactive({
     currentProfilePosts: [],
     currentPage: 1,
     totalPages: 1,
-    editingPost: null
+    editingPost: null,
+    profileResults: [],
 })

@@ -45,6 +45,11 @@ class PostsService {
 
     }
 
+    async getPostsFromQuery(query) {
+        AppState.posts = null
+        const response = await api.get(`/api/posts?query=${query}&page=${AppState.currentPage}`)
+        AppState.posts = response.data.posts.map(x => new Post(x))
+    }
 
     async loadPosts() {
         const response = await api.get(`/api/posts?page=${AppState.currentPage}`)

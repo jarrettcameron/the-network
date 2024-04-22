@@ -6,29 +6,29 @@
 @import "../../../node_modules/bootstrap/scss/utilities";
 
 $light-theme: (
-    "primary": #29c5fe,
-    "secondary": #919191,
+    "primary": #E723B6,
+    "secondary": #a184a1,
     "success": #0cbc87,
-    "info": #6093f7,
+    "info": #ED5072,
     "warning": #f7c32e,
     "danger": #e03d50,
-    "text": #000,
-    "page": #ebebeb,
-    "white": #fff,
+    "text": #040104,
+    "page": #fdf1fa,
+    "white": #fdf3fb
 );
 
 $dark-theme: (
-    "primary": #29c5fe,
-    "secondary": #919191,
+    "primary": #dc18ab,
+    "secondary": #8f7e8f,
     "success": #aa49f9,
-    "info": #6093f7,
+    "info": #af1234,
     "warning": #ffda6a,
     "danger": #e03d50,
-    "text": #f8f9fd,
-    "page": #111e2c,
+    "text": #fce8f8,
+    "page": #0a070a,
     "dark": #030110,
     "body-bg": #020314,
-    "white": #0d1721
+    "white": #131113
 );
 
 $default-colors: (
@@ -40,8 +40,7 @@ $default-colors: (
     "danger": $danger,
     "white": $white,
     "light": $light,
-    "dark": $dark,
-    "custom": #3ba5dc
+    "dark": $dark
 );
 
 @import "bootstrap";

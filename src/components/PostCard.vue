@@ -52,11 +52,11 @@ function edit(post) {
           class="post img-fluid w-100 rounded border"
         />
         <p class="mt-2 form-control w-100">{{ post.body }}</p>
-        <div class="d-flex justify-content-between text-info align-items-center">
+        <div class="d-flex justify-content-between text-primary align-items-center">
             <div>
                 <div v-if="post.creatorId == AppState.account?.id" class="d-flex gap-sm-3 gap-1">
-                    <button class="btn btn-info px-md-4" @click="edit(post)"><i class="mdi mdi-draw"></i> EDIT</button>
-                    <button class="btn btn-danger px-md-4" @click="deletePost(post)"><i class="mdi mdi-delete"></i> DELETE</button>
+                    <button class="btn btn-primary px-md-4" @click="edit(post)"><i class="mdi mdi-draw"></i> EDIT</button>
+                    <button class="btn btn-info px-md-4" @click="deletePost(post)"><i class="mdi mdi-delete"></i> DELETE</button>
                 </div>
             </div>
             <div class="d-flex gap-2" :class="{ 'pointer': AppState.account }" @click="likePost(post)">

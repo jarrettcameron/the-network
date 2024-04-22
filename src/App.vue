@@ -19,7 +19,7 @@ async function logout() {
   <header class="container-fluid">
     <div class="row">
       <div
-        class="col-xxl-2 col-lg-3 col-4 d-lg-block d-none shadow bg-white px-5"
+        class="col-xxl-2 col-xl-3 col-lg-4 col-4 d-lg-block d-none shadow bg-white px-5"
         style="min-height: 100dvh"
       >
         <div v-if="user?.isAuthenticated" class="sticky-top">
@@ -37,7 +37,7 @@ async function logout() {
               <span class="fs-4 fw-semibold">{{ account?.name }}</span>
             </div>
             <div class="col-12">
-              <button class="w-100 btn btn-outline-info" @click="logout()">Logout</button>
+              <button class="w-100 btn btn-outline-primary" @click="logout()">Logout</button>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ async function logout() {
           </div>
         </div>
       </div>
-      <div class="col-xxl-10 col-lg-9 col-12 p-0">
+      <div class="col-xxl-10 col-xl-9 col-lg-8 col-12 p-0">
         <div class="row g-0 sticky-top">
           <Navbar />
         </div>

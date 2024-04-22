@@ -6,9 +6,14 @@ class ProfilesService {
     async getProfileById(profileId) {
         AppState.currentProfile = null
         AppState.currentProfilePosts = null
-        AppState.currentPage = 1
-        const response = await api.get(`/api/profiles/${profileId}?page=${AppState.currentPage}`)
+        const response = await api.get(`/api/profiles/${profileId}`)
         AppState.currentProfile = new Account(response.data)
+    }
+
+    async getProfileFromQuery(query) {
+        AppState.profileResults = null
+        const response = await api.get(`/api/profiles?query=${query}`)
+        AppState.profileResults = response.data.map(x => new Account(x))
     }
 }
 

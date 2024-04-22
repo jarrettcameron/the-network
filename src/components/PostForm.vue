@@ -57,11 +57,11 @@ function toggleAttachment() {
       </div>
       <div class="col-xl-10 col-9">
         <textarea v-model="formData.body" name="" class="form-control" style="min-height: 125px" placeholder="Share what's happening"></textarea>
-        <div class="mt-2 text-info fw-semibold fs-5 d-flex justify-content-between w-100">
+        <div class="mt-2 text-primary fw-semibold fs-5 d-flex justify-content-between w-100">
           <div class="d-flex gap-2 align-content-center pointer" @click="toggleAttachment()">
             <i class="mdi mdi-image"></i> Photo
           </div>
-          <button class="d-flex text-info fw-semibold gap-2 align-content-center pointer" style="background: none; border: none; outline: none;">
+          <button class="d-flex text-primary fw-semibold gap-2 align-content-center pointer" style="background: none; border: none; outline: none;">
             <i class="mdi mdi-send"></i> Post
           </button>
         </div>

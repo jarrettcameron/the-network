@@ -36,6 +36,8 @@ async function loadProfile() {
 
 onMounted(() => {
     AppState.editingPost = null
+    AppState.currentPage = 1
+    AppState.currentProfilePosts = null
     loadProfile()
     getPosts()
 })
