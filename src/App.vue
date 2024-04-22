@@ -5,6 +5,7 @@ import { computed, onMounted } from "vue";
 import { AuthService } from "./services/AuthService";
 import Pop from "./utils/Pop";
 import { adsService } from "./services/AdsService";
+import { validationService } from "./services/ValidationService";
 
 const user = computed(() => AppState.user);
 const account = computed(() => AppState.account);
@@ -46,14 +47,24 @@ onMounted(() => {
                             <span class="fst-italic text-secondary">{{ account?.class }} <i v-if="account?.graduated" title="Graduated" class="mdi mdi-school"></i></span>
                             <br>
                             <span class="fs-4 fw-semibold">{{ account?.name }}</span>
+                            <div class="fs-5 d-flex align-items-center gap-2 mt-2">
+                                <i class="mdi mdi-github"></i>{{ account?.github.replaceAll('https://github.com/', '') || "Not Linked" }}
+                            </div>
+                            <div class="fs-5 d-flex align-items-center gap-2">
+                                <i class="mdi mdi-linkedin"></i>{{ account?.linkedin.replaceAll('https://linkedin.com/', '') || "Not Linked" }}
+                            </div>
+                            <div class="fs-5 d-flex align-items-center gap-2">
+                                <i class="mdi mdi-note-text-outline"></i><a class="text-body" v-if="account?.resume != ''" :href="account?.resume">View</a>{{ account?.resume ? '' : "Not Linked" }}
+                            </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mt-3">
+                            <router-link :to="{ name: 'Edit Profile' }" class="btn btn-outline-text w-100 mb-3">Edit Profile</router-link>
                             <button class="w-100 btn btn-outline-primary" @click="logout()">Logout</button>
                         </div>
                     </div>
                 </div>
                 <div v-else class="sticky-top">
-                    <div class="row pt-5">
+                    <div class="row pt-5 mt-5">
                         <div class="col-12">
                             <h4>You are currently logged out.</h4>
                             <p class="mt-4">
@@ -71,12 +82,12 @@ onMounted(() => {
                 </div>
                 <div class="row g-0">
                     <main class="col-xl-10">
-                        <div class="row d-xl-none justify-content-center">
+                        <div class="row g-0 d-xl-none justify-content-center">
                             <div class="col-lg-6 col-md-7 col-11 mt-4">
-                                <a v-for="ad in ads" :key="ad.title" :href="'https://' + ad.linkURL" target="_blank"><img :src="ad.banner" class="img-fluid my-2 pe-3" alt=""></a>
+                                <a v-for="ad in ads" :key="ad.title" :href="'https://' + ad.linkURL" target="_blank"><img :src="ad.banner" class="img-fluid my-2" alt=""></a>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row g-0">
                             <router-view />
                         </div>
                     </main>

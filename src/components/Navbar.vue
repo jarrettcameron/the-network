@@ -29,7 +29,9 @@ async function login() {
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-gradient px-3 justify-content-between">
-    <img v-if="account" :src="account?.picture || user?.picture" height="40" class="pfp d-lg-none">
+    <router-link v-if="account" :to="{ name: 'Profile', params: { profileId: account?.id || 'loading' }}">
+        <img  :src="account?.picture || user?.picture" height="40" class="pfp d-lg-none">
+    </router-link>
     <button v-else class="btn" @click="login()">LOGIN</button>
     <router-link class="navbar-brand px-0 mx-0 d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center gap-2 fw-bold">

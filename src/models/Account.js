@@ -11,5 +11,6 @@ export class Account {
         this.class = data.class || (data.graduated ? "Unlisted Class" : "Not Enrolled")
         this.github = data.github
         this.linkedin = data.linkedin
+        this.resume = data.resume
     }
 }

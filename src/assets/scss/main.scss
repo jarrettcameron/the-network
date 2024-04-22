@@ -22,11 +22,15 @@
     font-weight: 500;
 }
 
-.btn:hover {
-    color: white !important;
+.btn:hover:not(.btn-outline-text) {
+    color: white;
 }
 
-.btn:not(.btn-outline-info, .btn-outline-primary, .btn-outline-text, .page) {
+.btn-outline-text {
+    font-weight: 600;
+}
+
+.btn:not(.btn-outline-info, .btn-outline-primary, .btn-outline-text, .page, .btn-outline-light) {
     color: white !important;
     font-weight: 600;
 }
@@ -51,6 +55,8 @@
 body {
     overscroll-behavior: none;
     font-family: 'Poppins', sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #app {

@@ -3,6 +3,11 @@ import { Account } from "../models/Account.js"
 import { api } from "./AxiosService.js"
 
 class ProfilesService {
+    async updateProfile(formData) {
+        const response = await api.put('/account', formData)
+        AppState.account = new Account(response.data)
+    }
+
     async getProfileById(profileId) {
         AppState.currentProfile = null
         AppState.currentProfilePosts = null

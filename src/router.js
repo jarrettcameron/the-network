@@ -22,6 +22,11 @@ const routes = [
         component: loadPage('SearchPage')
     },
     {
+        path: '/edit-profile',
+        name: 'Edit Profile',
+        component: loadPage('EditProfilePage')
+    },
+    {
         path: '/account',
         name: 'Account',
         component: loadPage('AccountPage'),

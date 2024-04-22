@@ -79,7 +79,12 @@ watch(page, (nv, ov) => {
                     </div>
                     <div class="p-4 pt-3">
                         <span class="d-block fst-italic text-secondary">{{ profile.class }} <i v-if="profile.graduated" title="Graduated" class="mdi mdi-school"></i></span>
-                        <span class="fs-4 fw-semibold">{{ profile.name }}</span>
+                        <span class="d-flex fs-4 fw-semibold justify-content-between">
+                            <div>{{ profile.name }}</div>
+                            <div v-if="profile.id == account?.id">
+                                <router-link :to="{ name: 'Edit Profile' }" class="px-4 btn btn-outline-text">Edit Profile</router-link>
+                            </div>
+                        </span>
                         <span v-if="profile.bio != ''" class="d-block mt-3 text-secondary fst-italic">{{ profile.bio  }}</span>
                     </div>
                 </div>
