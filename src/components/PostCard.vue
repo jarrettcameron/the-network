@@ -13,17 +13,19 @@ async function deletePost(post) {
         await postsService.deletePost(post.id)
     }
     catch (error){
-      Pop.error(error);
+        console.error(error)
+        Pop.error("A problem occurred while deleting post. Please try again later.");
     }
 }
 
 async function likePost(post) {
-  if (!AppState.account) return
-  try {
+    if (!AppState.account) return
+    try {
         await postsService.likePost(post.id)
     }
     catch (error){
-      Pop.error(error);
+        console.error(error)
+        Pop.error("A problem occurred while liking post. Please try again later.");
     }
 }
 
@@ -55,7 +57,7 @@ function edit(post) {
         />
       </div>
       <div class="col-12 px-5" :class="post.imgUrl != '' ? 'py-4' : 'mb-4'">
-        
+
         <p class="mt-2 form-control w-100">{{ post.body }}</p>
         <div class="d-flex justify-content-between align-items-center">
             <div>

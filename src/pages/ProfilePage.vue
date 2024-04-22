@@ -20,6 +20,7 @@ async function getPosts() {
       await postsService.loadPostsByUser(route.params.profileId)
     }
     catch (error){
+        console.error(error)
       Pop.error("There was an issue loading profile posts. Please try again later.");
     }
 }
@@ -29,6 +30,7 @@ async function loadProfile() {
       await profilesService.getProfileById(route.params.profileId)
     }
     catch (error){
+        console.error(error)
       Pop.error("There was an issue loading that profile. Please try again later.");
       message.value = "There was an issue loading that profile. Please try again later."
     }

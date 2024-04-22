@@ -38,7 +38,8 @@ import { profilesService } from '../services/ProfilesService';
             Pop.success('Saved profile!')
         }
         catch (error){
-          Pop.error(error);
+            console.error(error)
+        Pop.error("A problem occurred while saving your profile. Please try again later.");
         }
     }
 </script>
@@ -97,7 +98,7 @@ import { profilesService } from '../services/ProfilesService';
                             <button class="btn btn-primary px-5 mt-4">Save Changes</button>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
         </div>

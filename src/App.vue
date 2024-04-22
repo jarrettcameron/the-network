@@ -22,7 +22,8 @@ async function loadAds() {
       await adsService.loadAds()
     }
     catch (error){
-      Pop.error(error);
+        console.error(error)
+        Pop.error("A problem occurred while loading ads. Please try again later.");
     }
 }
 

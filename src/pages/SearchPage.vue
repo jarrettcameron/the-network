@@ -18,7 +18,8 @@ async function loadPosts() {
         await postsService.getPostsFromQuery(query.value)
     }
     catch (error){
-        Pop.error(error);
+        console.error(error)
+        Pop.error("A problem occurred while loading posts. Please try again later.");
     }
 }
 
@@ -27,7 +28,8 @@ async function loadProfiles() {
         await profilesService.getProfileFromQuery(query.value)
     }
     catch (error){
-        Pop.error(error);
+        console.error(error)
+        Pop.error("A problem occurred while loading profiles. Please try again later.");
     }
 }
 

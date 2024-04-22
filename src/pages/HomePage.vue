@@ -11,7 +11,8 @@ async function getPosts() {
     try {
         await postsService.loadPosts()
     } catch (error) {
-        Pop.error("A problem occurred while loaded posts. Please try again later.")
+        console.error(error)
+        Pop.error("A problem occurred while loading posts. Please try again later.")
     }
 }
 
@@ -46,7 +47,7 @@ watch(page, (nv, ov) => {
             <PostCard :post="post" />
         </div>
       </div>
-      
+
       <Pagination/>
     </div>
   </div>

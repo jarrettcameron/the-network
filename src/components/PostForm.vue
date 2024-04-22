@@ -16,7 +16,8 @@ async function post() {
     formData.value = {imgUrl: "", body: ""}
   }
   catch (error){
-    Pop.error(error);
+    console.error(error)
+        Pop.error("A problem occurred while posting. Please try again later.");
   }
 }
 
@@ -26,7 +27,8 @@ async function edit() {
     formData.value = {imgUrl: "", body: ""}
   }
   catch (error){
-    Pop.error(error);
+    console.error(error)
+        Pop.error("A problem occurred while editing post. Please try again later.");
   }
 }
 
