@@ -34,12 +34,12 @@ import { profilesService } from '../services/ProfilesService';
 
     async function updateProfile() {
         try {
-            await profilesService.updateProfile(validationService.repopulate(formData.value))
+            await profilesService.updateProfile(validationService.populate(formData.value))
             Pop.success('Saved profile!')
         }
         catch (error){
             console.error(error)
-        Pop.error("A problem occurred while saving your profile. Please try again later.");
+            Pop.error("A problem occurred while saving your profile. Please try again later.");
         }
     }
 </script>

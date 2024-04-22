@@ -14,7 +14,7 @@ class ValidationService {
         return input
     }
 
-    repopulate(input) {
+    populate(input) {
         input = this.quickValidation(input)
         input = { ...input }
         if (input.github != "") input.github = `https://github.com/${input.github}`
