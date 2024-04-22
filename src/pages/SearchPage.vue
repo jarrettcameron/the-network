@@ -59,10 +59,11 @@ watch(page, (nv, ov) => {
 <template>
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
-            <div class="col-xxl-7 col-xl-8 col-lg-9 col-11">
+            <div class="col-md-7 col-lg-9 col-xxl-5 col-xl-7 col-11">
                 <h1>Showing Results for '{{ query }}'</h1>
             </div>
-            <div v-if="profileResults?.length > 0" class="col-xxl-7 col-xl-8 col-lg-9 col-11 mt-4">
+            <div class="w-100"></div>
+            <div v-if="profileResults?.length > 0" class="col-md-7 col-lg-9 col-xxl-5 col-xl-7 col-11 mt-4">
                 <h2>Users</h2>
                 <div>
                     <router-link v-for="profile in profileResults" :to="{ name: 'Profile', params: { profileId: profile.id } }" :key="profile.id" class="card bg-white border-0 shadow py-4 px-5 my-3">
@@ -76,7 +77,8 @@ watch(page, (nv, ov) => {
                     </router-link>
                 </div>
             </div>
-            <div v-if="posts?.length > 0" class="col-xxl-7 col-xl-8 col-lg-9 col-11 mt-4" id="feed">
+            <div class="w-100"></div>
+            <div v-if="posts?.length > 0" class="col-md-7 col-lg-9 col-xxl-5 col-xl-7 col-11 mt-4" id="feed">
                 <h2>Posts</h2>
                 <PostCard v-for="post in posts" :key="post.id" :post="post"/>
             </div>

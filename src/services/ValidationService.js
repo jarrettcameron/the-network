@@ -1,8 +1,10 @@
 class ValidationService {
     indivValidation(input) {
-        if (typeof input != 'string') return input
+        if (typeof input != 'string') {
+            return input
+        }
         // @ts-ignore
-        return input.replaceAll('https://', '').replaceAll('http://', '').replace('github.com/').replace('linkedin.com/')
+        return input.replaceAll('https://', '').replaceAll('http://', '').replaceAll('github.com/', '').replaceAll('linkedin.com/', '')
     }
 
     quickValidation(input) {

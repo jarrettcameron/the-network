@@ -36,21 +36,26 @@ function edit(post) {
 </script>
 
 <template>
-  <div class="bg-white p-4 px-xl-5 rounded shadow my-3">
+  <div class="bg-white rounded shadow my-3">
     <div class="row align-items-center">
-      <div class="col-xl-2 col-3 text-center">
-        <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
-          <img :src="post.creator.picture" class="w-75 pfp" alt="" />
-          <h6 class="mt-3 text-body">{{ post.creator.name }}</h6>
+      <div class="col-12 pt-3 px-5 mx-3">
+        <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } } " class="d-flex align-items-center gap-3">
+          <img :src="post.creator.picture" height="100" class="pfp" alt="" />
+          <div class="pt-3">
+              <h6 class="text-secondary">{{ post.creator.class || "Not Enrolled" }}</h6>
+              <h4 class="text-body">{{ post.creator.name }}</h4>
+              <p class="text-secondary fst-italic">{{ post.postDateString }}</p>
+          </div>
         </router-link>
       </div>
-      <div class="col-xl-10 col-9">
-        <p class="text-secondary fst-italic">{{ post.postDateString }}</p>
+      <div class="col-12 mt-3" v-if="post.imgUrl != ''">
         <img
-          v-if="post.imgUrl != ''"
           :src="post.imgUrl"
-          class="post img-fluid w-100 rounded border"
+          class="post w-100"
         />
+      </div>
+      <div class="col-12 px-5" :class="post.imgUrl != '' ? 'py-4' : 'mb-4'">
+        
         <p class="mt-2 form-control w-100">{{ post.body }}</p>
         <div class="d-flex justify-content-between align-items-center">
             <div>
@@ -70,10 +75,9 @@ function edit(post) {
 
 <style lang="scss" scoped>
 .post {
-  max-height: 300px;
-  object-fit: contain;
-  background-color: black;
-  object-position: center;
+    min-width: 100% !important;
+    object-fit: contain;
+    border: none;
 }
 
 .form-control {

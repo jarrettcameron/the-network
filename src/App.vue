@@ -5,7 +5,6 @@ import { computed, onMounted } from "vue";
 import { AuthService } from "./services/AuthService";
 import Pop from "./utils/Pop";
 import { adsService } from "./services/AdsService";
-import { validationService } from "./services/ValidationService";
 
 const user = computed(() => AppState.user);
 const account = computed(() => AppState.account);

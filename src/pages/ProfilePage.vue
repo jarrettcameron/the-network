@@ -95,8 +95,8 @@ watch(page, (nv, ov) => {
             <div class="col-lg-9 col-11">
                 <hr v-if="account?.id == profile?.id">
             </div>
-            <div class="col-lg-9 col-11" id="feed">
-                <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+            <div class="col-md-7 col-lg-9 col-xxl-5 col-xl-7 col-11" id="feed">
+                <PostCard class="my-4" v-for="post in posts" :key="post.id" :post="post"/>
                 <p v-if="posts?.length == 0" class="text-center text-secondary">This user hasn't made any posts yet.</p>
             </div>
             <Pagination v-if="posts?.length != 0"/>
