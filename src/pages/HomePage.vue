@@ -43,7 +43,7 @@ watch(page, (nv, ov) => {
       </div>
       <div class="w-100"></div>
       <div class="row flex-column align-content-center">
-        <div class="col-md-7 col-lg-9 col-xxl-5 col-xl-7 col-11 my-1" v-for="post in posts" :key="post">
+        <div class="col-md-7 col-lg-9 col-xxl-6 col-xl-7 col-11 my-1" v-for="post in posts" :key="post">
             <PostCard :post="post" />
         </div>
       </div>

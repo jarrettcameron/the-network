@@ -17,7 +17,7 @@ export class Post {
     }
 
     get postDateString() {
-        return `Posted ${this.formatDatetoRelative(this.createdAt)}${this.createdAt.getTime() == this.updatedAt.getTime() ? `` : ` (Edited ${this.formatDatetoRelative(this.updatedAt)})`}`
+        return `${this.formatDatetoRelative(this.createdAt)}${this.createdAt.getTime() == this.updatedAt.getTime() ? `` : ` | Edited ${this.formatDatetoRelative(this.updatedAt)}`}`
     }
 
     formatDatetoRelative(datee) {
@@ -33,16 +33,16 @@ export class Post {
 
         if (elapsed < msMinute) {
             let x = Math.round(elapsed / msSecond)
-            return `${x}s ago`
+            return `${x}s`
         } else if (elapsed < msHour) {
             let x = Math.round(elapsed / msMinute)
-            return `${x}m ago`
+            return `${x}m`
         } else if (elapsed < msDay) {
             let x = Math.round(elapsed / msHour)
-            return `${x}h ago`
+            return `${x}h`
         } else if (elapsed < msMonth) {
             let x = Math.round(elapsed / msDay)
-            return `${x}d ago`
+            return `${x}d`
         } else {
             return datee.toLocaleDateString()
         }

@@ -32,7 +32,7 @@ async function login() {
     <router-link v-if="account" :to="{ name: 'Profile', params: { profileId: account?.id || 'loading' }}">
         <img  :src="account?.picture || user?.picture" height="40" class="pfp d-lg-none">
     </router-link>
-    <button v-else class="btn" @click="login()">LOGIN</button>
+    <button v-else class="btn d-lg-none" @click="login()">LOGIN</button>
     <router-link class="navbar-brand px-0 mx-0 d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center gap-2 fw-bold">
         <i class="mdi mdi-lan fs-2"></i><span class="d-lg-block d-none"> TheNetwork</span>
@@ -50,7 +50,7 @@ async function login() {
           </router-link>
         </li> -->
       </ul>
-      
+
       <div class="me-lg-3 mt-lg-0 mt-3">
         <form>
           <div class="input-group">

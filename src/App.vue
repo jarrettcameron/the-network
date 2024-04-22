@@ -35,7 +35,7 @@ onMounted(() => {
 <template>
     <header class="container-fluid">
         <div class="row">
-            <div class="col-xxl-2 col-xl-3 col-lg-4 col-4 d-lg-block d-none shadow bg-white px-5" style="min-height: 100dvh">
+            <div class="col-xxl-3 col-xl-3 col-lg-4 col-4 d-lg-block d-none shadow bg-white px-5" style="min-height: 100dvh">
                 <div v-if="user?.isAuthenticated" class="sticky-top">
                     <div class="row pt-5">
                         <div class="col-12 text-center">
@@ -76,7 +76,7 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-10 col-xl-9 col-lg-8 col-12 p-0">
+            <div class="col-xxl-9 col-xl-9 col-lg-8 col-12 p-0">
                 <div class="row g-0 sticky-top">
                     <Navbar />
                 </div>
