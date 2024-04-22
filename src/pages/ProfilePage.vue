@@ -56,7 +56,7 @@ watch(page, (nv, ov) => {
 <template>
     <div v-if="profile" class="container-fluid">
         <div class="mt-5 row justify-content-center">
-            <div class="col-xxl-7 col-xl-6 col-lg-9 col-11 card border-0 bg-white shadow p-0">
+            <div class="col-xl-8 col-lg-9 col-11 card border-0 bg-white shadow p-0">
                 <img :src="profile.coverImg" class="banner card-img-top" alt="">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">

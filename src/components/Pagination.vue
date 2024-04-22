@@ -10,7 +10,7 @@ const totalPages = computed(() => AppState.totalPages)
 
 <template>
 <div class="col-lg-9 col-11 my-3 mb-5">
-    <div class="row text-center">
+    <div class="row text-center align-items-center">
         <div class="col-4">
             <button class="btn page w-100" :disabled="page == 1" @click="pagesService.changePage(page - 1)">Previous Page</button>
         </div>

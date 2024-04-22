@@ -32,13 +32,26 @@ async function loadProfiles() {
 }
 
 onMounted(() => {
+    AppState.currentPage = 1
+    AppState.totalPages = 1
     loadPosts()
     loadProfiles()
 })
 
-watch(query, (nv) => {
+watch(query, () => {
+    AppState.currentPage = 1
+    AppState.totalPages = 1
     loadPosts()
     loadProfiles()
+})
+
+const page = computed(() => AppState.currentPage)
+watch(page, (nv, ov) => {
+    if (nv != ov) {
+        document.querySelector('#feed').scrollIntoView()
+        AppState.posts = null
+        loadPosts()
+    }
 })
 </script>
 
@@ -46,12 +59,30 @@ watch(query, (nv) => {
 <template>
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-xxl-7 col-xl-8 col-lg-9 col-11">
                 <h1>Showing Results for '{{ query }}'</h1>
             </div>
-            <div class="col-9 mt-4">
+            <div v-if="profileResults?.length > 0" class="col-xxl-7 col-xl-8 col-lg-9 col-11 mt-4">
+                <h2>Users</h2>
+                <div>
+                    <router-link v-for="profile in profileResults" :to="{ name: 'Profile', params: { profileId: profile.id } }" :key="profile.id" class="card bg-white border-0 shadow py-4 px-5 my-3">
+                        <div class="d-flex gap-4 align-items-center">
+                            <img :src="profile.picture" class="pfp" height="100" alt="">
+                            <div>
+                                <h4>{{ profile.name }}</h4>
+                                <h6 class="text-secondary">{{ profile.class }} <i v-if="profile.graduated" title="Graduated" class="mdi mdi-school"></i></h6>
+                            </div>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+            <div v-if="posts?.length > 0" class="col-xxl-7 col-xl-8 col-lg-9 col-11 mt-4" id="feed">
                 <h2>Posts</h2>
-                <PostCard v-for="post in posts" :key="post.key" :post="post"/>
+                <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+            </div>
+            <Pagination v-if="posts?.length != 0"/>
+            <div v-if="profileResults?.length == 0 && posts?.length == 0" class="col-xxl-7 col-xl-8 col-lg-9 col-11 mt-4">
+                <span class="fs-5 text-secondary">No results found.</span>
             </div>
         </div>
     </div>

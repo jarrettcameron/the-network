@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import { AppState } from '../AppState.js';
+import { AuthService } from '../services/AuthService.js';
 
 const user = computed(() => AppState.user)
 const account = computed(() => AppState.account)
@@ -20,11 +21,16 @@ function toggleTheme() {
   saveState('theme', theme.value)
 }
 
+async function login() {
+  AuthService.loginWithPopup();
+}
+
 </script>
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-gradient px-3 justify-content-between">
     <img v-if="account" :src="account?.picture || user?.picture" height="40" class="pfp d-lg-none">
+    <button v-else class="btn" @click="login()">LOGIN</button>
     <router-link class="navbar-brand px-0 mx-0 d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center gap-2 fw-bold">
         <i class="mdi mdi-lan fs-2"></i><span class="d-lg-block d-none"> TheNetwork</span>
