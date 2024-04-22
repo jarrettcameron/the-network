@@ -15,7 +15,8 @@ import { profilesService } from '../services/ProfilesService';
         github: '',
         linkedin: '',
         resume: '',
-        bio: ''
+        bio: '',
+        name: ''
     })
 
     watch(account, (nv) => {
@@ -52,6 +53,12 @@ import { profilesService } from '../services/ProfilesService';
                 <form @submit.prevent="updateProfile()">
                     <h1 class="text-center">Edit Profile</h1>
                     <div class="row mt-5">
+                        <div class="col-12 mb-3">
+                            <div class="input-group">
+                                <label class="px-3 bg-white input-group-text">Display Name</label>
+                                <input class="form-control" type="text"  v-model="formData.name">
+                            </div>
+                        </div>
                         <div class="col-lg-6 col-12 mb-3">
                             <div class="input-group">
                                 <label class="px-3 bg-white input-group-text">https://</label>

@@ -24,7 +24,7 @@ onMounted(() => {
 const page = computed(() => AppState.currentPage)
 watch(page, (nv, ov) => {
     if (nv != ov) {
-        document.querySelector('#feed').scrollIntoView()
+        document.querySelector('#feed').scrollIntoView({block: 'end'})
         AppState.posts = null
         getPosts()
     }
@@ -34,11 +34,11 @@ watch(page, (nv, ov) => {
 <template>
   <div class="mt-4 container-fluid">
     <div class="row justify-content-center">
-      <div class="col-lg-9 col-11">
+      <div class="col-lg-9 col-11" id="feed">
         <PostForm v-if="account" />
       </div>
       <div class="w-100"></div>
-      <div class="col-lg-9 col-11 my-3 text-center" id="feed" v-if="account">
+      <div class="col-lg-9 col-11 my-3 text-center">
         <hr />
       </div>
       <div class="w-100"></div>
