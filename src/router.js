@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import { authGuard } from '@bcwdev/auth0provider-client'
 
 function loadPage(page) {
@@ -37,6 +37,6 @@ const routes = [
 export const router = createRouter({
     linkActiveClass: 'router-link-active',
     linkExactActiveClass: 'router-link-exact-active',
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes
 })

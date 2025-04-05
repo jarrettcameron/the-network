@@ -9,7 +9,7 @@ const account = computed(() => AppState.account)
 
 const searchQuery = ref('')
 
-const theme = ref(loadState('theme') || 'light')
+const theme = ref(loadState('theme') || 'dark')
 
 onMounted(() => {
   document.documentElement.setAttribute('data-bs-theme', theme.value)
