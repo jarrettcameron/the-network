@@ -30,6 +30,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.REPO_NAME }}:latest
-          file: server/Dockerfile
+          file: Dockerfile
           context: .
           push: true
