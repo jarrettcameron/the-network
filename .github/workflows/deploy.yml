@@ -34,6 +34,9 @@ jobs:
         run: |
           echo "$DOCKER_COMPOSE" > docker-compose.yml
 
+      - name: Show docker-compose.yml contents
+        run: cat docker-compose.yml
+
       - name: Send Docker Compose 🐋
         run: |
           scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r docker-compose.yml $EC2_USERNAME@$EC2_IP_ADDRESS:~/$REPO_NAME-compose
