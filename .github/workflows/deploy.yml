@@ -13,7 +13,6 @@ env:
   REPO_NAME: ${{ secrets.REPO_NAME }}
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  DOCKER_COMPOSE: ${{ secrets.DOCKER_COMPOSE }}
 
 jobs:
   deploy:
@@ -29,13 +28,6 @@ jobs:
           mkdir -p ~/.ssh
           echo "$EC2_PEM_KEY" > ~/.ssh/id_rsa.pem
           chmod 600 ~/.ssh/id_rsa.pem
-          
-      - name: Create Docker Compose file from secret 🐋
-        run: |
-          echo "$DOCKER_COMPOSE" > docker-compose.yml
-
-      - name: Show docker-compose.yml contents
-        run: cat docker-compose.yml
 
       - name: Send Docker Compose 🐋
         run: |
